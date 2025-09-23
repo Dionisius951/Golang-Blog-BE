@@ -6,14 +6,14 @@ import (
 
 	"github.com/Dionisius951/Golang-Blog-BE/internal/config"
 	"github.com/Dionisius951/Golang-Blog-BE/internal/db"
-	"github.com/gorilla/mux"
+	"github.com/Dionisius951/Golang-Blog-BE/internal/routes"
 )
 
 func main() {
 	PORT := config.LoadConfig().APP_PORT
 	db.ConnecDB()
 
-	r := mux.NewRouter()
+	r := routes.SetupRouter()
 
 	fmt.Printf("SERVER RUNNING ON PORT %v", PORT)
 	http.ListenAndServe(PORT, r)
