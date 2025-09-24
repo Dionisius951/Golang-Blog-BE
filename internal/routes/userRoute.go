@@ -8,5 +8,5 @@ import (
 func userRouter(r *mux.Router) {
 	userRoute := r.PathPrefix("/users").Subrouter()
 
-	userRoute.HandleFunc("/login",controllers.LoginHandler).Methods("GET")
+	userRoute.HandleFunc("/register",controllers.RegisterHandler).Methods("POST")
 }

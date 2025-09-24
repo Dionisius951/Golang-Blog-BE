@@ -15,6 +15,6 @@ func main() {
 
 	r := routes.SetupRouter()
 
-	fmt.Printf("SERVER RUNNING ON PORT %v", PORT)
+	fmt.Printf("SERVER RUNNING ON PORT %v \n", PORT)
 	http.ListenAndServe(PORT, r)
 }
