@@ -7,6 +7,7 @@ func SetupRouter() *mux.Router {
 	api := r.PathPrefix("/api/v1").Subrouter()
 
 	// all routes here
+	postRouter(api)
 	userRouter(api)
 	return r
 }

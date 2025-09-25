@@ -22,3 +22,20 @@ func RegisterUser(ctx context.Context, data *models.Users) error {
 	}
 	return nil
 }
+
+func LoginUser(ctx context.Context, data *models.Users) error {
+	var hashPassword string
+
+	sql := `SELECT password FROM "user" WHERE email=$1`
+	err := db.Pool.QueryRow(ctx, sql, data.Email).Scan(&hashPassword)
+	if err != nil {
+		return fmt.Errorf("Email Not Register")
+	}
+
+	err = bcrypt.CompareHashAndPassword([]byte(hashPassword), []byte(data.Password))
+	if err != nil {
+		return fmt.Errorf("Password Incorect!")
+	}
+
+	return nil
+}
