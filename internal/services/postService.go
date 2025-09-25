@@ -34,7 +34,7 @@ func GetAllPost(ctx context.Context) ([]models.Post, error) {
 			&post.UsernameId,
 		)
 		if err != nil {
-			fmt.Errorf(err.Error())
+			return nil, fmt.Errorf("%v \n", err)
 		}
 		data = append(data, post)
 	}
