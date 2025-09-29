@@ -34,7 +34,7 @@ func AddPostHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	helper.WriteJSON(w, http.StatusOK, models.ApiResponse{
+	helper.WriteJSON(w, http.StatusCreated, models.ApiResponse{
 		Success: true,
 		Message: "Content Created",
 	})
