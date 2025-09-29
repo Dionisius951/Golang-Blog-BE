@@ -6,3 +6,8 @@ type Post struct {
 	Content string `json:"content"`
 	UsernameId int `json:"username_id"`
 }
+
+type UpdatePost struct {
+	Title *string `json:"title"`
+	Content *string `json:"content"`
+}

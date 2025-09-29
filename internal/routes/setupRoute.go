@@ -9,5 +9,6 @@ func SetupRouter() *mux.Router {
 	// all routes here
 	postRouter(api)
 	userRouter(api)
+	commentRouter(api)
 	return r
 }
