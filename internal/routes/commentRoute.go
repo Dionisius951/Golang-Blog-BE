@@ -9,4 +9,7 @@ func commentRouter(r *mux.Router) {
 	commentRoute := r.PathPrefix("/comment").Subrouter()
 
 	commentRoute.HandleFunc("", controllers.AddCommentHandler).Methods("POST")
+	commentRoute.HandleFunc("/{id}", controllers.GetCommentByIdHandler).Methods("GET")
+	commentRoute.HandleFunc("/{id}", controllers.UpdateCommentHandler).Methods("PUT")
+	commentRoute.HandleFunc("/{id}", controllers.DeleteCommentHandler).Methods("DELETE")
 }
