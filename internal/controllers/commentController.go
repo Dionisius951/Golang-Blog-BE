@@ -108,7 +108,7 @@ func UpdateCommentHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func DeleteCommentHandler(w http.ResponseWriter, r *http.Request) {
-	err := CheckRoleHandler(r.Context(), []int{1})
+	err := CheckRoleHandler(r.Context(), []int{1,2})
 	if err != nil {
 		helper.WriteJSON(w, http.StatusBadRequest, models.ApiResponse{
 			Success: false,

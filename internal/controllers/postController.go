@@ -127,6 +127,15 @@ func UpdatePostHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func DeletePostHandler(w http.ResponseWriter, r *http.Request) {
+	err := CheckRoleHandler(r.Context(), []int{1,2})
+	if err != nil {
+		helper.WriteJSON(w, http.StatusBadRequest, models.ApiResponse{
+			Success: false,
+			Message: "Error Occured",
+			Error:   err.Error(),
+		})
+		return
+	}
 	vars := mux.Vars(r)
 	ContentID, err := strconv.Atoi(vars["id"])
 	if err != nil {
