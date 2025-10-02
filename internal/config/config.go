@@ -17,6 +17,7 @@ func LoadConfig() *models.Config{
 	config := &models.Config{
 		APP_PORT: os.Getenv("APP_PORT"),
 		DB_URL: os.Getenv("DB_URL"),
+		JWT_SIGN: os.Getenv("jwt_sign"),
 	}
 
 	return config

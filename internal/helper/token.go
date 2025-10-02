@@ -4,11 +4,12 @@ import (
 	"fmt"
 	"time"
 
+	"github.com/Dionisius951/Golang-Blog-BE/internal/config"
 	"github.com/Dionisius951/Golang-Blog-BE/internal/models"
 	"github.com/golang-jwt/jwt/v5"
 )
 
-var mySigningKey = []byte("Secret")
+var mySigningKey = []byte(config.LoadConfig().JWT_SIGN)
 
 func GenerateToken(user *models.Users) (string, error) {
 	claims := models.MyCustomClaims{
@@ -41,4 +42,13 @@ func ValidateToken(tokenString string) (any, error) {
 	}
 
 	return claims, nil
+}
+
+func CheckRole(required []int, current int) error {
+	for _, role := range required {
+		if current != role {
+			return fmt.Errorf("Forbidden Action")
+		}
+	}
+	return nil
 }
