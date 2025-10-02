@@ -12,8 +12,8 @@ var mySigningKey = []byte("Secret")
 
 func GenerateToken(user *models.Users) (string, error) {
 	claims := models.MyCustomClaims{
-		Id:       user.Id,
-		Username: user.Username,
+		Id:   user.Id,
+		Role: user.Role,
 		RegisteredClaims: jwt.RegisteredClaims{
 			ExpiresAt: jwt.NewNumericDate(time.Now().Add(2 * time.Minute)),
 			IssuedAt:  jwt.NewNumericDate(time.Now()),

@@ -23,19 +23,19 @@ func RegisterUser(ctx context.Context, data *models.Users) error {
 	return nil
 }
 
-func LoginUser(ctx context.Context, data *models.Users) error {
-	var hashPassword string
+func LoginUser(ctx context.Context, email string, password string) (*models.Users, error) {
+	var user models.Users
 
-	sql := `SELECT password FROM "user" WHERE email=$1`
-	err := db.Pool.QueryRow(ctx, sql, data.Email).Scan(&hashPassword)
+	sql := `SELECT * FROM "user" WHERE email=$1`
+	err := db.Pool.QueryRow(ctx, sql, email).Scan(&user.Id, &user.Username, &user.Email, &user.Password, &user.Role)
 	if err != nil {
-		return fmt.Errorf("Email Not Register")
+		return nil, fmt.Errorf("Email Not Register")
 	}
 
-	err = bcrypt.CompareHashAndPassword([]byte(hashPassword), []byte(data.Password))
+	err = bcrypt.CompareHashAndPassword([]byte(user.Password), []byte(password))
 	if err != nil {
-		return fmt.Errorf("Password Incorect!")
+		return nil, fmt.Errorf("Password Incorect!")
 	}
 
-	return nil
+	return &user, nil
 }

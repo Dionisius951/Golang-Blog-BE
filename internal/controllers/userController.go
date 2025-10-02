@@ -17,7 +17,7 @@ func RegisterHandler(w http.ResponseWriter, r *http.Request) {
 		helper.WriteJSON(w, http.StatusBadRequest, models.ApiResponse{
 			Success: false,
 			Message: "Error while process data",
-			Error: err.Error(),
+			Error:   err.Error(),
 		})
 		return
 	}
@@ -27,7 +27,7 @@ func RegisterHandler(w http.ResponseWriter, r *http.Request) {
 		helper.WriteJSON(w, http.StatusBadRequest, models.ApiResponse{
 			Success: false,
 			Message: "Error while process data",
-			Error: err.Error(),
+			Error:   err.Error(),
 		})
 		return
 	}
@@ -45,26 +45,26 @@ func LoginHandler(w http.ResponseWriter, r *http.Request) {
 		helper.WriteJSON(w, http.StatusBadRequest, models.ApiResponse{
 			Success: false,
 			Message: "Error while process data",
-			Error: err.Error(),
+			Error:   err.Error(),
 		})
 		return
 	}
 
-	err = services.LoginUser(r.Context(), &data)
+	result, err := services.LoginUser(r.Context(), data.Email, data.Password)
 	if err != nil {
 		helper.WriteJSON(w, http.StatusBadRequest, models.ApiResponse{
 			Success: false,
 			Message: "Error while process data",
-			Error: err.Error(),
+			Error:   err.Error(),
 		})
 		return
 	}
-	usr, err := helper.GenerateToken(&data)
+	usr, err := helper.GenerateToken(result)
 	if err != nil {
 		helper.WriteJSON(w, http.StatusBadRequest, models.ApiResponse{
 			Success: false,
 			Message: "Error while process data",
-			Error: err.Error(),
+			Error:   err.Error(),
 		})
 		return
 	}
@@ -72,6 +72,6 @@ func LoginHandler(w http.ResponseWriter, r *http.Request) {
 	helper.WriteJSON(w, http.StatusOK, models.ApiResponse{
 		Success: true,
 		Message: "Login Success!",
-		Data : usr,
+		Data:    usr,
 	})
 }
