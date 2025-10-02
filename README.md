@@ -1,6 +1,6 @@
 # Golang-Blog-BE
 
-Backend API untuk aplikasi blog menggunakan Go.  
+Repo ini adalah project pembelajaran dari Backend API untuk aplikasi blog menggunakan Go.  
 Mendukung autentikasi JWT, manajemen posting, kategori, dan komentar.
 
 ## Fitur
