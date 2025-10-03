@@ -29,15 +29,15 @@ Mendukung autentikasi JWT, manajemen posting, kategori, dan komentar.
 
 | Method | Path                   | Deskripsi                    | Auth |
 | ------ | ---------------------- | ---------------------------- | ---- |
-| POST   | `/auth/register`       | Register pengguna baru       | No   |
-| POST   | `/auth/login`          | Login pengguna               | No   |
-| GET    | `/posts`               | Ambil semua posting          | No   |
-| GET    | `/posts/{id}`          | Ambil posting by ID          | No   |
-| POST   | `/posts`               | Tambah posting baru          | Yes  |
-| PUT    | `/posts/{id}`          | Update posting               | Yes  |
-| DELETE | `/posts/{id}`          | Hapus posting                | Yes  |
-| GET    | `/categories`          | Ambil semua kategori         | No   |
-| POST   | `/categories`          | Tambah kategori              | Yes  |
-| GET    | `/posts/{id}/comments` | Ambil komentar pada posting  | No   |
-| POST   | `/posts/{id}/comments` | Tambah komentar pada posting | Yes  |
+| POST   | `/register`            | Register pengguna baru       | No   |
+| POST   | `/login`               | Login pengguna               | No   |
+| GET    | `/post`                | Ambil semua posting          | No   |
+| GET    | `/post/{id}`           | Ambil posting by ID          | No   |
+| POST   | `/post`                | Tambah posting baru          | Yes  |
+| PUT    | `/post/{id}`           | Update posting               | Yes  |
+| DELETE | `/post/{id}`           | Hapus posting                | Yes  |
+| GET    | `/comment/{id}`        | Ambil komentar pada posting  | No   |
+| POST   | `/comment/{id}`        | Tambah komentar pada posting | Yes  |
+| PUT    | `/comment/{id}`        | Update komentar pada posting | No   |
+| DELETE | `/comment/{id}`        | Delete komentar pada posting | Yes  |
 
